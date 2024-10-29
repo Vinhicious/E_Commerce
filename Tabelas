@@ -22,7 +22,7 @@ CREATE TABLE produtos (
     Preco DECIMAL(10, 2) NOT NULL,
     Categoria_ID INT,
     Fornecedor_ID INT,
-    FOREIGN KEY (Categoria_ID) REFERENCES categoria(Categoria_ID),
+    FOREIGN KEY (Categoria_ID) REFERENCES categorias(Categoria_ID),
     FOREIGN KEY (Fornecedor_ID) REFERENCES fornecedores(Fornecedor_ID)
 );
 CREATE TABLE categorias (
