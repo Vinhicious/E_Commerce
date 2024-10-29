@@ -6,17 +6,17 @@ CREATE TABLE clientes (
     Data_Cadastro DATE NOT NULL
 );
 
-CREATE TABLE endereços (
+CREATE TABLE enderecos (
 	Endereco_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     Rua VARCHAR(50) NOT NULL,
     Estado VARCHAR(50) NOT NULL,
-    CEP INT NOT NULL,
+    CEP VARCHAR(15) NOT NULL,
     Cliente_ID INT,
     FOREIGN KEY (Cliente_ID) REFERENCES clientes(Cliente_ID)
 );
 
 CREATE TABLE produtos (
-	Produtos_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	Produto_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     Nome VARCHAR(50) NOT NULL,
     Descricao VARCHAR(50) NOT NULL,
     Preco DECIMAL(10, 2) NOT NULL,
@@ -50,11 +50,11 @@ CREATE TABLE vendas (
 CREATE TABLE itens_venda (
 	Item_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     Venda_ID INT,
-    Produtos_ID INT,
+    Produto_ID INT,
     Quantidade INT NOT NULL,
     Preco_Unitario DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (Venda_ID) REFERENCES vendas(Venda_ID),
-    FOREIGN KEY (Produtos_ID) REFERENCES produtos(Produtos_ID)
+    FOREIGN KEY (Produto_ID) REFERENCES produtos(Produto_ID)
 );
 
 CREATE TABLE pagamentos (
@@ -77,5 +77,5 @@ CREATE TABLE carrinho (
     Produto_ID INT,
     Quantidade INT NOT NULL,
     FOREIGN KEY (Cliente_ID) REFERENCES clientes(Cliente_ID),
-    FOREIGN KEY (Produto_ID) REFERENCES produtos(Produtos_ID)
+    FOREIGN KEY (Produto_ID) REFERENCES produtos(Produto_ID)
 );
